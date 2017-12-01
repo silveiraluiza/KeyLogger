@@ -1,16 +1,16 @@
-# Node.js Loginapp
+# Node.js KeyLogger
 
-This is a user login and registration app using Node.js, Express, Passport and Mongoose. It is part of the YouTube series [here](https://www.youtube.com/watch?v=Z1ktxiqyiLA)
+Aplicativo web criado utiizando o seguinte [tutorial](https://www.youtube.com/watch?v=Z1ktxiqyiLA)
+
+Criado para auxiliar na gerência de objetos.
 
 ### Version
 1.1.0
 
-### Usage
 
+### Instalação
 
-### Installation
-
-Loginapp requires [Node.js](https://nodejs.org/) v4+ to run.
+KeyLogger requer [Node.js](https://nodejs.org/) v4+.
 
 ```sh
 $ npm install
