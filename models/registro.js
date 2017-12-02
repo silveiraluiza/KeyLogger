@@ -7,11 +7,15 @@ var RegistroSchema = mongoose.Schema({
 		type: String
 	},
 	dia: {
-		type: String
-	},
-	data: {
 		type: String,
 		index:true
+	},
+	hora: {
+		type: String
+		
+	},
+	local: {
+		type: String
 	}
 });
 

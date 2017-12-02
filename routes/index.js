@@ -8,6 +8,7 @@ router.get('/', ensureAuthenticated, function(req, res){
 	res.render('index');
 });
 
+
 function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
@@ -18,7 +19,8 @@ function ensureAuthenticated(req, res, next){
 }
 agora = new Date();
 
-var ultimos = Registro.getRegistrobyDia(agora.getDate() + '/' + agora.getMonth()+1 + '/' + agora.getFullYear());
+
+
 
 // Register User
 router.post('/', function(req, res){
@@ -26,11 +28,14 @@ router.post('/', function(req, res){
 	var nome = req.body.controle;
 	var hoje = new Date();
 	var dia = hoje.getDate() + '/' + (hoje.getMonth()+1) + '/' + hoje.getFullYear();
-	var hora =  " às " + hoje.getHours() + ":" + hoje.getMinutes();
+	var hora = hoje.getHours() + ":" + hoje.getMinutes();
+	var local = req.body.local;
 
 
 	// Validation
 	req.checkBody('controle', 'Campo deve ser preenchido').notEmpty();
+	req.checkBody('local', 'Campo deve ser preenchido').notEmpty();
+
 
 	var errors = req.validationErrors();
 
@@ -42,7 +47,8 @@ router.post('/', function(req, res){
 		var newRegistro = new Registro({
 			nome: nome,
 			dia: dia,
-			hora: hora
+			hora: hora,
+			local: local
 		});
 
 		Registro.createRegistro(newRegistro, function(err, registro){
@@ -54,6 +60,13 @@ router.post('/', function(req, res){
 
 		res.redirect('/');
 	}
+
+	ultimos = Registro.getRegistrobyDia('2/12/2017', function(err, registro){
+			if(err) throw err;
+			console.log(registro);
+		});
+
+	console.log(ultimos)
 });
 
 module.exports = router;
