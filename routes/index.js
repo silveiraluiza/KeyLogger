@@ -46,7 +46,7 @@ router.post('/key', function(req, res){
 	var hoje = new Date;
 	var nome = req.body.controle;
 	var dia = hoje.getDate() + '/' + (hoje.getMonth()+1) + '/' + hoje.getFullYear();
-	var hora = hoje.getHours() + ":" + hoje.getMinutes();
+	var hora = (hoje.getHours()-3) + ":" + hoje.getMinutes();
 	var local = req.body.local;
 
 
