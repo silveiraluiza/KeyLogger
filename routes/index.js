@@ -43,7 +43,7 @@ agora = new Date();
 
 // Register User
 router.post('/', function(req, res){
-
+	var hoje = new Date;
 	var nome = req.body.controle;
 	var dia = hoje.getDate() + '/' + (hoje.getMonth()+1) + '/' + hoje.getFullYear();
 	var hora = hoje.getHours() + ":" + hoje.getMinutes();
@@ -58,7 +58,7 @@ router.post('/', function(req, res){
 	var errors = req.validationErrors();
 
 	if(errors){
-		res.render('/',{
+		res.render('index',{
 			errors:errors
 		});
 	} else {

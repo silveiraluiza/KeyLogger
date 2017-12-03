@@ -10,6 +10,7 @@ body {
 .footer {
   padding-right: 15px;
   padding-left: 15px;
+  color: #166493
 }
 
 /* Custom page header */
@@ -22,8 +23,14 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
+  color: #166493;
 }
-
+.header h1 {
+  color: #0f727c;
+}
+.header h2 {
+  color: #0f727c;
+}
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -42,6 +49,7 @@ body {
 }
 
 /* Main marketing message and sign up button */
+
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
