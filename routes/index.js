@@ -36,13 +36,13 @@ function ensureAuthenticated(req, res, next){
 		res.redirect('/users/login');
 	}
 }
-agora = new Date();
 
+router.get('/key', function(req, res){
+	res.render('key');
+});
 
-
-
-// Register User
-router.post('/', function(req, res){
+// Register object
+router.post('/key', function(req, res){
 	var hoje = new Date;
 	var nome = req.body.controle;
 	var dia = hoje.getDate() + '/' + (hoje.getMonth()+1) + '/' + hoje.getFullYear();
@@ -58,7 +58,7 @@ router.post('/', function(req, res){
 	var errors = req.validationErrors();
 
 	if(errors){
-		res.render('index',{
+		res.render('key',{
 			errors:errors
 		});
 	} else {
