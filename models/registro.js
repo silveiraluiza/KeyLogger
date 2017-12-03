@@ -27,7 +27,7 @@ module.exports.createRegistro = function(newRegistro, callback){
 
 module.exports.getRegistrobyNome = function(nome, callback){
 	var query = {nome: nome};
-	Registro.findOne(query, callback);
+	Registro.find(query, callback);
 }
 
 module.exports.getRegistroById = function(id, callback){
@@ -36,5 +36,5 @@ module.exports.getRegistroById = function(id, callback){
 
 module.exports.getRegistrobyDia = function(dia, callback){
 	var query = {dia: dia};
-	Registro.findOne(query, callback);
+	Registro.find(query, callback);
 }

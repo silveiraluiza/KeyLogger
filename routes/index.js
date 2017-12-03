@@ -2,10 +2,29 @@ var express = require('express');
 var router = express.Router();
 
 var Registro = require('../models/registro');
+var hoje = new Date();
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
-	res.render('index');
+
+	Registro.getRegistrobyDia(hoje.getDate() + '/' + (hoje.getMonth()+1) + '/' + hoje.getFullYear(), function(err, registro){
+			if(err) throw err;
+			var ultimos = [];
+			for (i in registro){
+
+				console.log(registro[i]);
+				console.log(registro[i]['nome']);
+
+				ultimos.push(registro[i]['nome'] + 
+					' estava em posse da chave às: ' + registro[i]['hora'] + ' pode ser encontrado(a) no ' +
+					registro[i]['local']);
+
+				console.log(ultimos);
+				
+			}
+			res.render('index', { message: ultimos});
+		});
+
 });
 
 
@@ -26,7 +45,6 @@ agora = new Date();
 router.post('/', function(req, res){
 
 	var nome = req.body.controle;
-	var hoje = new Date();
 	var dia = hoje.getDate() + '/' + (hoje.getMonth()+1) + '/' + hoje.getFullYear();
 	var hora = hoje.getHours() + ":" + hoje.getMinutes();
 	var local = req.body.local;
@@ -60,13 +78,6 @@ router.post('/', function(req, res){
 
 		res.redirect('/');
 	}
-
-	ultimos = Registro.getRegistrobyDia('2/12/2017', function(err, registro){
-			if(err) throw err;
-			console.log(registro);
-		});
-
-	console.log(ultimos)
 });
 
 module.exports = router;
