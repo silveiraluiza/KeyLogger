@@ -11,7 +11,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/controleChave');
+mongoose.connect('mongodb://luizacs:SHIranui17@carva-shard-00-00-jpdif.mongodb.net:27017,carva-shard-00-01-jpdif.mongodb.net:27017,carva-shard-00-02-jpdif.mongodb.net:27017/test?ssl=true&replicaSet=carva-shard-0&authSource=admin');
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
