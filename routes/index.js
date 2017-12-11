@@ -44,9 +44,15 @@ router.get('/key', function(req, res){
 // Register object
 router.post('/key', function(req, res){
 	var hoje = new Date;
+	var minutos = '';
+	if (hoje.getMinutes() < 10){
+		minutos = minutos + '0' + hoje.getMinutes();
+	}else{
+		minutos = hoje.getMinutes();
+	}
 	var nome = req.body.controle;
 	var dia = hoje.getDate() + '/' + (hoje.getMonth()+1) + '/' + hoje.getFullYear();
-	var hora = (hoje.getHours()-3) + ":" + hoje.getMinutes();
+	var hora = (hoje.getHours()-3) + ":" + minutos;
 	var local = req.body.local;
 
 
