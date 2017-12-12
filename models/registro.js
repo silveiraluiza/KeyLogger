@@ -36,7 +36,7 @@ module.exports.getRegistroById = function(id, callback){
 
 module.exports.getRegistrobyDia = function(dia, callback){
 	var query = {dia: dia};
-	Registro.find(query).limit(5).exec(callback);
+	Registro.find(query).sort("-_id").limit(5).exec(callback);
 }
 module.exports.getAllRegistrobyDia = function(dia, callback){
 	var query = {dia: dia};
