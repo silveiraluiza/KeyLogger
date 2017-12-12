@@ -37,12 +37,12 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
-router.get('/key', function(req, res){
+router.get('/key', ensureAuthenticated, function(req, res){
 	res.render('key');
 });
 
 // Register object
-router.post('/key', function(req, res){
+router.post('/key', ensureAuthenticated, function(req, res){
 	var hoje = new Date;
 	var minutos = '';
 	if (hoje.getMinutes() < 10){
