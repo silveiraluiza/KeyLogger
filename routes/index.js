@@ -27,6 +27,28 @@ router.get('/', ensureAuthenticated, function(req, res){
 
 });
 
+router.get('/all', ensureAuthenticated, function(req, res){
+
+	Registro.getAllRegistrobyDia(hoje.getDate() + '/' + (hoje.getMonth()+1) + '/' + hoje.getFullYear(), function(err, registro){
+			if(err) throw err;
+			var ultimos = [];
+			for (i in registro){
+
+				console.log(registro[i]);
+				console.log(registro[i]['nome']);
+
+				ultimos.push(registro[i]['nome'] + 
+					' estava em posse da chave às: ' + registro[i]['hora'] + ' pode ser encontrado(a) no ' +
+					registro[i]['local']);
+
+				console.log(ultimos);
+				
+			}
+			res.render('index', { message: ultimos});
+		});
+
+});
+
 
 function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()){
