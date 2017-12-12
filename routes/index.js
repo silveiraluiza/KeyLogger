@@ -22,7 +22,7 @@ router.get('/', ensureAuthenticated, function(req, res){
 				console.log(ultimos);
 				
 			}
-			res.render('index', { message: ultimos});
+			res.render('index', { message: ultimos, subtitle: "- Recentes"});
 		});
 
 });
@@ -44,7 +44,7 @@ router.get('/all', ensureAuthenticated, function(req, res){
 				console.log(ultimos);
 				
 			}
-			res.render('index', { message: ultimos});
+			res.render('index', { message: ultimos, subtitle: "- Todos do Dia"});
 		});
 
 });
